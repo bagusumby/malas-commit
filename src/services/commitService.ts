@@ -16,11 +16,8 @@ export const generateCommitMessage = async (diff: string) => {
       * <type> MUST be one of:  
         - feat  
         - fix  
-        - docs  
-        - style  
         - refactor  
         - test  
-        - chore  
       * <scope> MUST be one of:  
         - api  
         - ui  
@@ -36,6 +33,8 @@ export const generateCommitMessage = async (diff: string) => {
       - feat(api): add user authentication  
       - fix(ui): resolve button misalignment  
       - fix(ui): update fillAuditTrail call in login method  
+    
+    * DO NOT WRITE (<scope>) WITH NAME FILE ONLY (api), (ui) or nothing
   `,
   };
 
