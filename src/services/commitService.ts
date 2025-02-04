@@ -16,11 +16,15 @@ export const generateCommitMessage = async (diff: string) => {
       * <type> MUST be one of:  
         - feat  
         - fix  
-        - refactor  
+        - docs  
+        - style  
         - test  
+        - chore  
       * <scope> MUST be one of:  
-        - api  
-        - ui  
+        - api
+        - ui
+        - or nothing
+        - DO NOT WRITE scope with file name please only one of above
       * <subject>: A concise description of the change, written in present tense, without a period at the end.  
 
     ADDITIONAL RULES:  
@@ -33,8 +37,6 @@ export const generateCommitMessage = async (diff: string) => {
       - feat(api): add user authentication  
       - fix(ui): resolve button misalignment  
       - fix(ui): update fillAuditTrail call in login method  
-    
-    * DO NOT WRITE (<scope>) WITH NAME FILE ONLY (api), (ui) or nothing
   `,
   };
 
