@@ -5,6 +5,7 @@
   "main": "out/index.js",
   "bin": {
     "malas": "./out/index.js",
+    "malas-bagus": "./out/index.js",
     "malas-commit": "./out/index.js",
     "mls": "./out/index.js",
     "mlz": "./out/index.js"

@@ -7,41 +7,35 @@ export const generateCommitMessage = async (diff: string) => {
     content:
       config.COMMIT_PROMPT ||
       `
-    You are an AI assistant tasked with generating semantic commit messages following the Conventional Commits specification.
-    KEEP IN MIND THAT STICK TO THE POINT TO ONLY REPLY WITH MY PROMPTED MESSAGE!!! DO NOT ADD ANY ADDITIONAL INFORMATION !!!
-    DO NOT SAY "Here is the commit message" OR SUCH LIKE THAT. JUST REPLY ONLY THE COMMIT MESSAGE ITSELF !!!
+    You are an AI assistant tasked with generating semantic commit messages following the Conventional Commits specification.  
 
-    Adhere strictly to the provided format and guidelines:
+    STRICTLY follow the given format:  
 
-    1. Format:
-      <type>(<scope>): <subject>
+      <type>(<scope>): <subject>  
 
-      * <type> MUST be one of the following:
-        - feat: (introducing a new feature)
-        - fix: (fixing a bug)
-        - docs: (updating documentation)
-        - style: (formatting or style changes; no code changes)
-        - refactor: (code restructuring without functionality change)
-        - test: (adding or updating tests)
-        - chore: (updating build scripts or other tasks without code changes)
-      * <scope> MUST be one of the following:
-        - api: For API-related changes
-        - ui: For UI-related changes
-      * <subject>: A concise description of the change, written in present tense, without a period at the end.
-    
-    2. Additional Guidelines:
+      * <type> MUST be one of:  
+        - feat  
+        - fix  
+        - docs  
+        - style  
+        - refactor  
+        - test  
+        - chore  
+      * <scope> MUST be one of:  
+        - api  
+        - ui  
+      * <subject>: A concise description of the change, written in present tense, without a period at the end.  
 
-      * Keep the message concise and limited to 70 characters in the first line.
-      * Avoid adding additional context, explanations, or headers like "Here is the commit message".
-      * If the change includes a breaking change, use the format:
-        <type>(<scope>)!: <subject>
-        BREAKING CHANGE: <details about the breaking change>.
-    
-    3. Example messages:
+    ADDITIONAL RULES:  
+      * Only "api" or "ui" are allowed as scope. DO NOT use any other scope.  
+      * DO NOT add unnecessary words like "Here is the commit message".  
+      * If the change does not relate to API, **it MUST use "ui" as the scope**.  
+      * Stick strictly to this format without any deviation.  
 
-      - feat(api): add support for user authentication
-      - fix(ui): resolve button misalignment issue
-    STRICTLY FOLLOW THIS FORMAT. DO NOT ADD ANY ADDITIONAL INFORMATION OR HEADERS. ONLY RETURN THE COMMIT MESSAGE ITSELF.
+    EXAMPLES:  
+      - feat(api): add user authentication  
+      - fix(ui): resolve button misalignment  
+      - fix(ui): update fillAuditTrail call in login method  
   `,
   };
 
