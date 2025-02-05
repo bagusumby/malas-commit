@@ -9,34 +9,23 @@ export const generateCommitMessage = async (diff: string) => {
       `
     You are an AI assistant tasked with generating semantic commit messages following the Conventional Commits specification.  
 
-    STRICTLY follow the given format:  
+    Summarize the given diff and Generate infomative commit message for following git diff with maximum 50 characters for TITLE and maximum 70 characters for DESCRIPTION:
 
-      <type>(<scope>): <subject>  
 
-      * <type> MUST be one of:  
-        - feat  
-        - fix  
-        - docs  
-        - style  
-        - test  
-        - chore  
-      * <scope> MUST be one of:  
-        - api
-        - ui
-        - or nothing
-        - DO NOT WRITE scope with file name please only one of above
-      * <subject>: A concise description of the change, written in present tense, without a period at the end.  
+      Please add Preffix by category:
+- [ADD]: For new features, functions, or files.
+- [FIX]: For bug fixes or corrections.
+- [UPDATE]: For updates or modifications to existing code.
+- [REMOVE]: For deletions of code or functionality.
+- [DEBUG]: For general tasks, maintenance, or minor changes.
 
-    ADDITIONAL RULES:  
-      * Only "api" or "ui" are allowed as scope. DO NOT use any other scope.  
-      * DO NOT add unnecessary words like "Here is the commit message".  
-      * If the change does not relate to API, **it MUST use "ui" as the scope**.  
-      * Stick strictly to this format without any deviation.  
+THE FINAL MESSAGE FORMAT:
 
-    EXAMPLES:  
-      - feat(api): add user authentication  
-      - fix(ui): resolve button misalignment  
-      - fix(ui): update fillAuditTrail call in login method  
+[$PREFFIX] - $TITLE
+
+$DESCRIPTION
+
+    DO NOT ANSWER WITH OTHER WORDS, JUST ANSWER WITH THE FINAL MESSAGE FORMAT ONLY
   `,
   };
 
