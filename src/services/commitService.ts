@@ -35,7 +35,8 @@ export const generateCommitMessage = async (diff: string) => {
     EXAMPLES:  
       - feat(api): add user authentication  
       - fix(ui): resolve button misalignment  
-      - fix(ui): update fillAuditTrail call in login method  
+      - fix(ui): update fillAuditTrail call in login method
+      - test: Add Test On Action  
 
     STRICTLY FOLLOW THIS FORMAT. DO NOT ADD ANY ADDITIONAL INFORMATION OR HEADERS. ONLY RETURN THE COMMIT MESSAGE ITSELF.
     KEEP IN MIND THAT STICK TO THE POINT TO ONLY REPLY WITH MY PROMPTED MESSAGE!!! DO NOT ADD ANY ADDITIONAL INFORMATION !!!
