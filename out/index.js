@@ -15,7 +15,7 @@ import {
   gitCommit,
 } from "./git/gitUtils.js";
 import os from "os";
-import { confirm } from "@clack/prompts";
+import { select, confirm } from "@clack/prompts";
 const configFilePath = path.join(os.homedir(), ".malas-commit");
 const loadConfig = () => {
   if (!fs.existsSync(configFilePath)) {
@@ -50,6 +50,19 @@ const runGenerate = async () => {
   try {
     await assertGitRepo();
     await ensureFilesAreStaged();
+
+    const commitType = await select({
+      message: "Select the type of commit:",
+      options: [
+        { value: "feat(ui):", label: "feat(ui): **(UI improvements)**" },
+        { value: "feat(api):", label: "feat(api): **(API changes)**" },
+        { value: "refactor:", label: "refactor: **(Refactor changes)**" },
+        { value: "test:", label: "test: **(Adding or modifying tests)**" },
+        { value: "chore:", label: "chore: **(Maintenance tasks)**" },
+        { value: "style:", label: "style: **(Adding or modifying Style)**" },
+      ],
+    });
+
     const stagedFiles = await getStagedFiles();
     const diff = await getDiff(stagedFiles);
     if (!diff || diff.length === 0) {
@@ -74,6 +87,8 @@ const runGenerate = async () => {
       truncatedDiff.push("\nStaged Files:\n", ...stagedFiles);
     }
     let commitMessage = await generateCommitMessage(truncatedDiff.join("\n"));
+    commitMessage = `${commitType} ${commitMessage}`;
+
     let useCommitMessage = await confirm({
       message: `Generated Commit Message: \n\n${commitMessage}\n\nDo you want to use this commit message?`,
       initialValue: true,
@@ -82,6 +97,7 @@ const runGenerate = async () => {
       await gitCommit(commitMessage);
     } else {
       commitMessage = await generateCommitMessage(diff);
+      commitMessage = `${commitType} ${commitMessage}`;
       useCommitMessage = await confirm({
         message: `Regenerated Commit Message: \n\n${commitMessage}\n\nDo you want to use this commit message?`,
         initialValue: true,

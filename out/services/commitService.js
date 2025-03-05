@@ -10,32 +10,19 @@ export const generateCommitMessage = async (diff) => {
 
     STRICTLY follow the given format:  
 
-      <type>(<scope>): <subject>  
+      <subject>  
 
-      * <type> MUST be one of:  
-        - feat  
-        - fix  
-        - docs  
-        - style  
-        - test  
-        - chore  
-      * <scope> MUST be one of:  
-        - api
-        - ui
-        - or nothing
       * <subject>: A concise description of the change, written in present tense, without a period at the end.  
 
     ADDITIONAL RULES:  
-      * Only "api" or "ui" are allowed as scope. DO NOT use any other scope.  
       * DO NOT add unnecessary words like "Here is the commit message".  
-      * If the change does not relate to API, **it MUST use "ui" as the scope**.  
       * Stick strictly to this format without any deviation.  
 
     EXAMPLES:  
-      - feat(api): add user authentication  
-      - fix(ui): resolve button misalignment  
-      - fix(ui): update fillAuditTrail call in login method
-      - test: Add Test On Action  
+      - add user authentication  
+      - resolve button misalignment  
+      - update fillAuditTrail call in login method
+      - Add Test On Action  
 
     STRICTLY FOLLOW THIS FORMAT. DO NOT ADD ANY ADDITIONAL INFORMATION OR HEADERS. ONLY RETURN THE COMMIT MESSAGE ITSELF.
     KEEP IN MIND THAT STICK TO THE POINT TO ONLY REPLY WITH MY PROMPTED MESSAGE!!! DO NOT ADD ANY ADDITIONAL INFORMATION !!!
